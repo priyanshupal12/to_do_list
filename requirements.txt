@@ -1,0 +1,7 @@
+Flask==2.3.2
+pymysql
+Flask-MySQLdb==0.2.0
+Flask-WTF==1.1.1    # For form validation
+Flask-Login==0.5.0  # For user authentication
+WTForms==3.0.1      # For handling web forms
+gunicorn==20.1.0    # WSGI server for production

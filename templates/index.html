@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>My TO-DO LIST</h1>
+    
+    <!-- Add Task Form -->
+    <form method="post" action="/add">
+        <input type="text" name="task" placeholder="New Task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Task List with Mark Done and Delete Options -->
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <form method="post" action="/done/{{ task[0] }}" style="display:inline;">
+                <input type="checkbox" name="done" {% if task[2] %}checked{% endif %} onchange="this.form.submit()">
+                {{ task[1] }}
+            </form>
+            <form method="post" action="/delete/{{ task[0] }}" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
